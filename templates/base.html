@@ -186,27 +186,55 @@
             text-align: center;
             padding: 15px;
             margin-top: 30px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
         .footer a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
+            margin: 5px 10px;
             font-weight: bold;
         }
         .footer a:hover {
             text-decoration: underline;
         }
         .footer .social-icons {
-            margin-top: 10px;
+            display: flex;
+            gap: 15px;
         }
         .footer .social-icons a {
             color: white;
             font-size: 20px;
-            margin: 0 10px;
             text-decoration: none;
         }
         .footer .social-icons a:hover {
             color: #ddd;
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin-left: 0; /* Reset margin on smaller screens */
+            }
+            .dashboard {
+                flex-direction: column;
+            }
+            .info {
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 10px;
+            }
+            .info:last-child {
+                border-bottom: none;
+            }
+            .table-responsive {
+                overflow-x: auto;
+            }
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -242,7 +270,7 @@
 
     <div class="footer">
         <p>© 2025 Nirnay — @adalat</p>
-        <a href="#settings">Settings</a> | <a href="#about">About Us</a> | <a href="#contact">Contact Us</a>
+        <a href="#settings">Settings</a> &nbsp <a href="#about">About Us</a> &nbsp <a href="#contact">Contact Us</a>
         <div class="social-icons">
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-linkedin"></i></a>

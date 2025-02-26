@@ -1,8 +1,116 @@
 {% extends 'base.html' %}
 {% block styles %}
-
+.chat-container {
+    width: 80%;
+    height: 100vh;
+    margin-left: 250px; /* Shift right for sidebar */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.chat-box {
+    margin: 10px;
+    width: 90%;
+    height: 80vh;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: #fff;
+    border-radius: 10px;
+}
+.chat-input-container {
+    display: flex;
+    width: 90%;
+    margin-top: 10px;
+    align-items: center;
+}
+.chat-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.send-btn {
+    padding: 10px 15px;
+    border: none;
+    background: #003366;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.send-btn:hover {
+    background: #0056b3;
+}
+@media (max-width: 1024px) {
+    .chat-container {
+        width: 90%;
+        margin-left: 200px; /* Adjust for smaller screens */
+    }
+}
+@media (max-width: 768px) {
+    .chat-container {
+        width: 100%;
+        margin-left: 0; /* Center on small screens */
+        padding: 10px;
+    }
+    .chat-box {
+        height: 60vh;
+    }
+    .chat-input-container {
+        flex-direction: row;
+        width: 90%;
+    }
+    .chat-input {
+        width: 100%;
+    }
+    .send-btn {
+        margin-left: 10px;
+        width: 20%;
+    }
+}
 {% endblock %}
 
 {% block body %}
-
+<div class="chat-container">
+    <h2>Chatbot</h2>
+    <h2>Say Hi! to start conversation</h2>
+    <div class="chat-box" id="chat-box">
+        <p><strong>Bot:</strong> {{ response }} </p>
+    </div>
+    <div class="chat-input-container">
+        <form method="POST" style="display: flex; width: 100%;">
+            {% csrf_token %}
+            <input type="text" id="user-input" name="user-input" class="chat-input" placeholder="Type your message...">
+            <button class="send-btn" type='submit'>Send</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
+<script>
+    function sendMessage() {
+        let userInput = document.getElementById("user-input").value;
+        if (!userInput.trim()) return;
+
+        let chatBox = document.getElementById("chat-box");
+        chatBox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+        document.getElementById("user-input").value = "";
+
+        fetch("/api/chatbot/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message: userInput }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            chatBox.innerHTML += `<p><strong>Bot:</strong> ${data.reply}</p>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        })
+        .catch(error => console.error("Error:", error));
+    }
+</script>
