@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block styles %}
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #003366;
+}
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 51, 102, 0.3);
+    position: relative;
+}
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background-color: #003366;
+    border-radius: 8px 0 0 8px;
+}
+.form-group label {
+    font-weight: bold;
+}
+.btn-submit {
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+@media (max-width: 992px) {
+    .container {
+        max-width: 90%;
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        max-width: 95%;
+        padding: 20px;
+    }
+}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2 class="text-center mb-4">Legal Case Form Filling</h2>
+    <form>
+        <div class="form-group">
+            <label for="caseTitle">Case Title</label>
+            <input type="text" class="form-control" id="caseTitle" placeholder="Enter case title">
+        </div>
+        <div class="form-group">
+            <label for="petitioner">Petitioner Name</label>
+            <input type="text" class="form-control" id="petitioner" placeholder="Enter petitioner name">
+        </div>
+        <div class="form-group">
+            <label for="respondent">Respondent Name</label>
+            <input type="text" class="form-control" id="respondent" placeholder="Enter respondent name">
+        </div>
+        <div class="form-group">
+            <label for="court">Court Name</label>
+            <input type="text" class="form-control" id="court" placeholder="Enter court name">
+        </div>
+        <div class="form-group">
+            <label for="bench">Bench</label>
+            <input type="text" class="form-control" id="bench" placeholder="Enter bench">
+        </div>
+        <div class="form-group">
+            <label for="caseNumber">Case Number</label>
+            <input type="text" class="form-control" id="caseNumber" placeholder="Enter case number">
+        </div>
+        <div class="form-group">
+            <label for="filingDate">Filing Date</label>
+            <input type="date" class="form-control" id="filingDate">
+        </div>
+        <div class="form-group">
+            <label for="judgmentDate">Judgment Date</label>
+            <input type="date" class="form-control" id="judgmentDate">
+        </div>
+        <div class="form-group">
+            <label for="lawyers">Lawyers Involved</label>
+            <input type="text" class="form-control" id="lawyers" placeholder="Enter names of lawyers">
+        </div>
+        <div class="form-group">
+            <label for="caseSummary">Case Summary</label>
+            <textarea class="form-control" id="caseSummary" rows="4" placeholder="Enter case summary"></textarea>
+        </div>
+        <button type="submit" class="btn btn-submit btn-block">Submit</button>
+    </form>
+</div>
+{% endblock %}

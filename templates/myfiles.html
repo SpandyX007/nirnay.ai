@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block styles %}
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #003366;
+}
+.container {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 20px;
+}
+.files-box {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+    border-left: 5px solid #003366;
+}
+.table {
+    background: white;
+}
+.thead-dark {
+    background-color: #003366 !important;
+    color: white;
+}
+@media (max-width: 768px) {
+    .files-box {
+        padding: 15px;
+    }
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
+
+{% endblock %}
+
+{% block body %}
+<div class="container text-center">
+    <h2 class="text-center mb-4">My Files</h2>
+    
+    <div class="files-box">
+        <h3 class="text-center mb-3">Saved Cases</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Citation</th>
+                        <th>Petitioner</th>
+                        <th>Respondent</th>
+                        <th>Court</th>
+                        <th>Bench</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2023-101</td>
+                        <td>John Doe</td>
+                        <td>State</td>
+                        <td>Supreme Court</td>
+                        <td>Bench A</td>
+                        <td>2023-07-10</td>
+                    </tr>
+                    <tr>
+                        <td>2023-102</td>
+                        <td>Jane Doe</td>
+                        <td>City Council</td>
+                        <td>High Court</td>
+                        <td>Bench B</td>
+                        <td>2023-08-15</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="files-box">
+        <h3 class="text-center mb-3">My Cases</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Citation</th>
+                        <th>Petitioner</th>
+                        <th>Respondent</th>
+                        <th>Court</th>
+                        <th>Bench</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2023-201</td>
+                        <td>XYZ Corporation</td>
+                        <td>Regulatory Board</td>
+                        <td>District Court</td>
+                        <td>Bench C</td>
+                        <td>2023-09-20</td>
+                    </tr>
+                    <tr>
+                        <td>2023-202</td>
+                        <td>Alice Smith</td>
+                        <td>Local Authority</td>
+                        <td>Supreme Court</td>
+                        <td>Bench A</td>
+                        <td>2023-10-05</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
