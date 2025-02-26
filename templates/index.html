@@ -4,6 +4,7 @@
     max-width: 1100px;
     margin: 50px auto;
     padding: 20px;
+    margin-left: 280px; /* Adjusting margin for sidebar */
 }
 .dashboard {
     display: flex;
@@ -34,6 +35,9 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 @media (max-width: 768px) {
+    .container {
+        margin-left: 0; /* Reset margin on smaller screens */
+    }
     .dashboard {
         flex-direction: column;
     }
