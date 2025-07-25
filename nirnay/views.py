@@ -10,7 +10,7 @@ import base64
 
 def generate(user_input):
   client = genai.Client(
-      api_key=("AIzaSyDborNKyQdkM4546d3KbBkUl26Tjo1hHKM")
+      api_key=("YOUR_API_KEY")
   )
 
   model = "gemini-2.0-flash"
